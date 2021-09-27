@@ -5,9 +5,9 @@ public class Book {
     private final String title;
     private final String author;
     private final int pages;
-    private final int numberISBN;
+    private final String numberISBN;
 
-    public Book(String title, String author, int pages, int numberISBN) {
+    public Book(String title, String author, int pages, String numberISBN) {
         this.title = title;
         this.author = author;
         this.pages = pages;
@@ -26,7 +26,7 @@ public class Book {
         return pages;
     }
 
-    public int getNumberISBN() {
+    public String getNumberISBN() {
         return numberISBN;
     }
 }

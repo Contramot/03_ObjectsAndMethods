@@ -3,10 +3,10 @@ package ru.skillbox;
 public class Product {
 
     private final String name;
-    private final int barCode;
+    private final String barCode;
     private int price;
 
-    public Product(String name, int barCode) {
+    public Product(String name, String barCode) {
         this.name = name;
         this.barCode = barCode;
     }
@@ -15,7 +15,7 @@ public class Product {
         return name;
     }
 
-    public int getBarCode() {
+    public String getBarCode() {
         return barCode;
     }
 
