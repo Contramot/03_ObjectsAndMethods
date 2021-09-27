@@ -3,15 +3,24 @@ package ru.skillbox;
 public class Product {
 
     private final String name;
-    private final int price;
+    private final int barCode;
+    private int price;
 
-    public Product(String name, int price) {
+    public Product(String name, int barCode) {
         this.name = name;
-        this.price = price;
+        this.barCode = barCode;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getBarCode() {
+        return barCode;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getPrice() {
