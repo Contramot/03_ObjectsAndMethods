@@ -1,10 +1,14 @@
 public class Basket {
 
-    private static int count = 0;
+    private int count = 0;              // Счетчик товаров внутри каждой корзины
     private String items = "";
     private int totalPrice = 0;
     private int limit;
     private double totalWeight = 0;
+
+    // Добавьте две статические переменные для хранения общей стоимости и общего количества всех товаров во всех корзинах.
+    private static int totalCost;       // Стоимость всех корзин
+    private static int totalCount;      // Счетчик товаров для всех корзин
 
     public Basket() {
         increaseCount(1);
@@ -23,12 +27,16 @@ public class Basket {
         this.totalPrice = totalPrice;
     }
 
-    public static int getCount() {
+    // TODO Реализуйте статические методы, которые будут увеличивать значения этих переменных при добавлении в корзину новых товаров.
+    // TODO Реализуйте статический метод расчёта средней цены товара во всех корзинах. Он должен рассчитывать и возвращать отношение общей стоимости всех корзин к общему количеству всех товаров.
+    // TODO Реализуйте статический метод расчёта средней стоимости корзины (отношение общей стоимости всех корзин к количеству корзин).
+
+    public int getCount() {
         return count;
     }
 
     public static void increaseCount(int count) {
-        Basket.count = Basket.count + count;
+        Basket.totalCount = Basket.totalCount + count;
     }
 
     public void add(String name, int price) {
