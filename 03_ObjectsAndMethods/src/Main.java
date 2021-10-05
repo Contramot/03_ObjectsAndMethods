@@ -1,13 +1,24 @@
 public class Main {
 
     public static void main(String[] args) {
+
+        System.out.println(basketStatistics());
+
         Basket basket = new Basket();
         basket.add("Milk", 4, 3, 1.5);
         basket.print("Milka");
 
-        arithmetic();
+        System.out.println(basketStatistics());
 
-        printer();
+        Basket basket1 = new Basket();
+        basket1.add("Bread", 3, 8, 0.6);
+        basket1.print("Bread");
+
+        System.out.println(basketStatistics());
+
+        //arithmetic();
+
+        //printer();
     }
 
     public static void arithmetic() {
@@ -34,5 +45,14 @@ public class Main {
 
         printer.print();
         printer.print();
+    }
+
+    public static String basketStatistics() {
+        return "\nСтатистика по корзинам:\n" +
+                "Всего корзин: " + Basket.totalBaskets + "\n" +
+                "Всего товаров во всех корзинах: " + Basket.totalCount+ "\n" +
+                "Стоимость всех корзин: " + Basket.totalCost + "\n" +
+                "Средняя цена товара во всех корзинах: " + Basket.calculationAverageTotalPrice() + "\n" +
+                "Средня стоимость корзины: " + Basket.calculationAverageBasketPrice() + "\n";
     }
 }

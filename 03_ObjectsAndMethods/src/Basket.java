@@ -7,11 +7,15 @@ public class Basket {
     private double totalWeight = 0;
 
     // Добавьте две статические переменные для хранения общей стоимости и общего количества всех товаров во всех корзинах.
-    private static int totalCost;       // Стоимость всех корзин
-    private static int totalCount;      // Счетчик товаров для всех корзин
+    public static int totalCost = 0;                // Стоимость всех корзин
+    public static int totalCount = 0;               // Счетчик товаров для всех корзин
+    public static double averageTotalPrice = 0;     // Средняя цена товара во всех корзинах
+    public static int totalBaskets = 0;             // Количество всех корзин
+    public static int averageBasketPrice = 0;       // Средня стоимость корзины
+
 
     public Basket() {
-        increaseCount(1);
+        increaseTotalBaskets(1);
         items = "Список товаров:";
         this.limit = 1000000;
     }
@@ -27,16 +31,43 @@ public class Basket {
         this.totalPrice = totalPrice;
     }
 
-    // TODO Реализуйте статические методы, которые будут увеличивать значения этих переменных при добавлении в корзину новых товаров.
-    // TODO Реализуйте статический метод расчёта средней цены товара во всех корзинах. Он должен рассчитывать и возвращать отношение общей стоимости всех корзин к общему количеству всех товаров.
-    // TODO Реализуйте статический метод расчёта средней стоимости корзины (отношение общей стоимости всех корзин к количеству корзин).
-
     public int getCount() {
         return count;
     }
 
+    // Реализуйте статические методы, которые будут увеличивать значения этих переменных при добавлении в корзину новых товаров.
     public static void increaseCount(int count) {
         Basket.totalCount = Basket.totalCount + count;
+    }
+
+    public static void increaseCost(int cost) {
+        Basket.totalCost = Basket.totalCost + cost;
+    }
+
+    public static void increaseTotalBaskets(int basket) {
+        Basket.totalBaskets = Basket.totalBaskets + basket;
+    }
+
+    // Реализуйте статический метод расчёта средней цены товара во всех корзинах.
+    // Он должен рассчитывать и возвращать отношение общей стоимости всех корзин к общему количеству всех товаров.
+    public static double calculationAverageTotalPrice() {
+        if(totalCount == 0) {
+            averageTotalPrice = 0;
+        } else {
+            averageTotalPrice = totalCost / totalCount;
+        }
+        return averageTotalPrice;
+    }
+
+    // Реализуйте статический метод расчёта средней стоимости корзины
+    // (отношение общей стоимости всех корзин к количеству корзин).
+    public static double calculationAverageBasketPrice() {
+        if(totalBaskets == 0) {
+            averageBasketPrice = 0;
+        } else {
+            averageBasketPrice = totalCost / totalBaskets;
+        }
+        return averageBasketPrice;
     }
 
     public void add(String name, int price) {
@@ -63,6 +94,9 @@ public class Basket {
             " руб. - " + weight + " кг.";
         totalPrice = totalPrice + count * price;
         totalWeight += weight;
+
+        increaseCount(count);
+        increaseCost(totalPrice);
     }
 
     public void clear() {
