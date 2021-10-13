@@ -8,6 +8,7 @@ public class Main {
         int year = 1990;
 
         System.out.println(collectBirthdays(year, month, day));
+        System.out.println("Hello World");
 
     }
 
