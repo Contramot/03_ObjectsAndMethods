@@ -1,3 +1,6 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Main {
 
@@ -14,10 +17,23 @@ public class Main {
 
     public static String collectBirthdays(int year, int month, int day) {
 
-        //TODO реализуйте метод для построения строки в следующем виде
-        //0 - 31.12.1990 - Mon
-        //1 - 31.12.1991 - Tue
-        
-        return "";
+        String collectBirthdays = "";
+        LocalDate birthday = LocalDate.of(year, month, day);
+        LocalDate today = LocalDate.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy - E").localizedBy(new Locale("us"));
+
+        int i = 0;
+        while (true) {
+            if (birthday.isBefore(today) || birthday.equals(today)) {
+                collectBirthdays += i + " - " + formatter.format(birthday) + System.lineSeparator();
+                birthday = birthday.plusYears(1);
+                i++;
+            } else {
+                break;
+            }
+        }
+
+        return collectBirthdays;
     }
 }
