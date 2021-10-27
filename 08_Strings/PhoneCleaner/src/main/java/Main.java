@@ -10,8 +10,32 @@ public class Main {
       if (input.equals("0")) {
         break;
       }
-      //TODO:напишите ваш код тут, результат вывести в консоль.
+      //напишите ваш код тут, результат вывести в консоль.
+      System.out.println(formatPhoneNumber(input));
     }
+  }
+
+  public static String formatPhoneNumber (String phone) {
+    String result;
+    String regexCleaner = "[^0-9]";
+    phone = phone.replaceAll(regexCleaner, "");
+
+    String regexCountAllNumbers = "[78][0-9]{10}";
+    String regexCountNumbers = "[0-9]{10}";
+    String regexCorrectFormat = "[^7][0-9]{10}";
+
+    if (phone.matches(regexCountAllNumbers)) {
+      if (phone.matches(regexCorrectFormat)) {
+        result = '7' + phone.substring(1);
+      } else {
+        result = phone;
+      }
+    } else if (phone.matches(regexCountNumbers)) {
+      result = '7' + phone;
+    } else {
+      result = "Неверный формат номера";
+    }
+    return result;
   }
 
 }
