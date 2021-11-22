@@ -16,25 +16,26 @@ public class Main {
   }
 
   public static String formatPhoneNumber (String phone) {
-    String result;
+    String result = "Неверный формат номера";
+
     String regexCleaner = "[^0-9]";
     phone = phone.replaceAll(regexCleaner, "");
 
-    String regexCountAllNumbers = "[78][0-9]{10}";
-    String regexCountNumbers = "[0-9]{10}";
-    String regexCorrectFormat = "[^7][0-9]{10}";
-
-    if (phone.matches(regexCountAllNumbers)) {
-      if (phone.matches(regexCorrectFormat)) {
-        result = '7' + phone.substring(1);
-      } else {
-        result = phone;
-      }
-    } else if (phone.matches(regexCountNumbers)) {
-      result = '7' + phone;
-    } else {
-      result = "Неверный формат номера";
+    String regexCorrectFormat = "[7][0-9]{10}";
+    if (phone.matches(regexCorrectFormat)) {
+      result = phone;
     }
+
+    String regexExtraEight = "[8][0-9]{10}";
+    if (phone.matches(regexExtraEight)) {
+      result = '7' + phone.substring(1);
+    }
+
+    String regexNoCode = "[0-9]{10}";
+    if (phone.matches(regexNoCode)) {
+      result = '7' + phone;
+    }
+
     return result;
   }
 
