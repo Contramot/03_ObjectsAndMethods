@@ -5,11 +5,16 @@ public class Main {
 
         String[] words = line.split(",?\\s+");
 
-        for (int i = 0; i < words.length; i++) {
-            System.out.println(words[i]);
+        for (String word : words) {
+            System.out.println(word);
         }
 
+        ReverseArray array = new ReverseArray();
+        array.reverse(words);
 
+        for (String word : words) {
+            System.out.println(word);
+        }
 
     }
 }
