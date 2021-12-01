@@ -10,7 +10,7 @@ public class Hospital {
             patientsTemperatures[i] = (float) Math.round(value * 10) / 10;
         }
 
-        return patientsTemperatures;
+            return patientsTemperatures;
     }
 
     public static String getReport(float[] temperatureData) {
