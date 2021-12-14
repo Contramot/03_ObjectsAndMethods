@@ -2,37 +2,34 @@ import java.util.ArrayList;
 
 public class TodoList {
 
-    ArrayList<String> todoList;
-
-    public TodoList() {
-        this.todoList = new ArrayList<>();
-    }
+    ArrayList<String> todoList = new ArrayList<>();
 
     public void add(String todo) {
         // Добавляет переданное дело в конец списка
         todoList.add(todo);
+        System.out.println("Добавлено дело \"" + todo + "\"");
     }
 
     public void add(int index, String todo) {
-        // Добавляет дело на указаный индекс,
-        //  проверяет возможность добавления
+        // Добавляет дело на указаный индекс.
+        // Проверяет возможность добавления по индексу.
+        // Если проверку не проходит, то добавляет в конец списка
 
-        if (index <= todoList.size()) {     // TODO добавить проверку индекса на отрицательное значение
+        if (index >= 0 && index <= todoList.size()) {
             todoList.add(index, todo);
         } else {
             todoList.add(todo);
         }
 
-//        for (int i = 0; i < todoList.size(); i++) {
-//            System.out.println("Task " + (i + 1) + " : " + todoList.get(i));
-//        }
+        System.out.println("Добавлено дело \"" + todo + "\"");
     }
 
     public void edit(String todo, int index) {
-        // TODO: заменить дело на index переданным todo индекс,
-        //  проверьте возможность изменения
+        // Заменяет дело на index переданным делом,
+        // Проверяет возможность изменения.
+        // Если проверку не проходит, то ничего не делает.
 
-        if (index < todoList.size()) {
+        if (index >= 0 && index < todoList.size()) {
             String oldValue = todoList.get(index);
             todoList.set(index, todo);
             System.out.println("Дело \"" + oldValue + "\" заменено на \"" + todoList.get(index) + "\"");
@@ -41,13 +38,28 @@ public class TodoList {
     }
 
     public void delete(int index) {
-        // TODO: удалить дело находящееся по переданному индексу,
-        //  проверьте возможность удаления дела
+        // Удаляет дело, находящееся по переданному индексу.
+        // Проверяет возможность удаления дела.
+
+        if (index >= 0 && index < todoList.size()) {
+            String exValue = todoList.get(index);
+            todoList.remove(index);
+            System.out.println("Дело \"" + exValue + "\" удалено");
+        } else {
+            System.out.println("Дело с таким номером не существует");
+        }
+
     }
 
     public ArrayList<String> getTodos() {
-        // TODO: вернуть список дел
-        return new ArrayList<>();
+        // Возвращает список дел
+
+        ArrayList<String> listTodos = new ArrayList<>();
+
+        for (int i = 0; i < todoList.size(); i++) {
+            listTodos.add(i + " - " + todoList.get(i));
+        }
+        return listTodos;
     }
 
 }

@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class  Main {
     //private static TodoList todoList = new TodoList();
@@ -10,11 +9,16 @@ public class  Main {
         myTodoList.add("Learn Java");
         myTodoList.add("perekur");
 
-        myTodoList.add(4,"continue Learn Java");
+        myTodoList.add(2,"continue Learn Java");
 
         myTodoList.edit("no smoking", 1);
 
-        //myTodoList.getTodos();
+        //myTodoList.delete(1);
+
+        for (int i = 0; i < myTodoList.getTodos().size(); i++) {
+            System.out.println(myTodoList.getTodos().get(i));
+        }
+
 
         //System.out.println(myTodoList.getTodos().get(0));
     }
