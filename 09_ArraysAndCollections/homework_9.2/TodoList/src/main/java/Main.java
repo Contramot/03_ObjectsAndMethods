@@ -1,25 +1,47 @@
+import java.util.Scanner;
 
 public class  Main {
-    //private static TodoList todoList = new TodoList();
 
     public static void main(String[] args) {
         // TODO: написать консольное приложение для работы со списком дел todoList
 
+        String lineSeparator = System.lineSeparator();
+        System.out.println("Введите команду:" + lineSeparator +
+                "ADD - добавить дело в конец списка или по индексу" + lineSeparator +
+                "EDIT - заменить дело с указанным индексом" + lineSeparator +
+                "DELETE - удалить дело с указанным индексом" + lineSeparator +
+                "LIST - вывести список дел с порядковыми номерами" + lineSeparator);
+
         TodoList myTodoList = new TodoList();
-        myTodoList.add("Learn Java");
-        myTodoList.add("perekur");
 
-        myTodoList.add(2,"continue Learn Java");
+        Scanner scanner = new Scanner(System.in);
 
-        myTodoList.edit("no smoking", 1);
+        while (true) {
+            String input = scanner.nextLine();
+            String[] fullAction = input.split("\\s+", 2);
 
-        //myTodoList.delete(1);
+            if (input.equals("0")) {
+                break;
+            }
 
-        for (int i = 0; i < myTodoList.getTodos().size(); i++) {
-            System.out.println(myTodoList.getTodos().get(i));
+            switch (fullAction[0]) {
+                case "ADD":
+                    break;
+                case "EDIT":
+                    break;
+                case "DELET":
+                    break;
+                case "LIST":
+                    break;
+                default:
+                    System.out.println("Не верная команда. Повторите ввод.");
+            }
+
+
         }
 
+//        String regex1 = "^([/\\D]+)\\s([/\\d]+)\\s(.+)";
+//        String regex2 = "^([/\\D]+)\\s(.+)";
 
-        //System.out.println(myTodoList.getTodos().get(0));
     }
 }

@@ -54,12 +54,15 @@ public class TodoList {
     public ArrayList<String> getTodos() {
         // Возвращает список дел
 
-        ArrayList<String> listTodos = new ArrayList<>();
 
-        for (int i = 0; i < todoList.size(); i++) {
-            listTodos.add(i + " - " + todoList.get(i));
-        }
-        return listTodos;
+
+//        ArrayList<String> listTodos = new ArrayList<>();
+//
+//        for (int i = 0; i < todoList.size(); i++) {
+//            listTodos.add(i + " - " + todoList.get(i));       //TODO в нужный формат выводить уже в main'е
+//        }
+//        return listTodos;
+        return todoList;
     }
 
 }
