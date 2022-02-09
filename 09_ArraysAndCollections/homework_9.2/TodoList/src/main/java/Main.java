@@ -26,6 +26,7 @@ public class  Main {
 
             switch (fullAction[0]) {
                 case "ADD":
+                    myTodoList.add(fullAction[1]);
                     break;
                 case "EDIT":
                     break;
